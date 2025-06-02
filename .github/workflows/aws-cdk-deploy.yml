@@ -3,6 +3,7 @@ name: AWS CDK Deployment Pipeline
 on:
   push:
     branches: [develop]
+  workflow_dispatch:  # Manual trigger 
 
 jobs:
   build:
