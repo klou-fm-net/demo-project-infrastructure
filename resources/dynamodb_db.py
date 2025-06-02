@@ -4,6 +4,8 @@ from aws_cdk import (
 )
 
 def create_dynamodb_table(scope) :
+
+    # Create DynamoDB Table with "Name" (String) as the partition key
     ddb_table = dynamodb.Table(
         scope, 
         "DemoTable",
@@ -11,6 +13,7 @@ def create_dynamodb_table(scope) :
         billing_mode = dynamodb.BillingMode.PAY_PER_REQUEST,
     )
 
+    # Write table name to SSM Parameter Store
     ssm.StringParameter(scope, "DynamoTableNameParam",
         parameter_name = "/config/cdk_demo/dynamodb/table_name",
         string_value = ddb_table.table_name

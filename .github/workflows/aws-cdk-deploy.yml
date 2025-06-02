@@ -37,8 +37,8 @@ jobs:
           aws-region: "us-east-2"
       - name: CDK DIFF
         run: cdk diff
-      - name: CDK SYNTH
-        run: cdk synth
+      # - name: CDK SYNTH
+      #   run: cdk synth
   deploy:
     needs: build
     runs-on: ubuntu-latest

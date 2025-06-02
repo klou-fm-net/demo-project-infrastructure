@@ -11,20 +11,20 @@ def create_eks_ckuser(scope, vpc):
         cluster = eks.Cluster(
             scope, "MyEksCluster",
             vpc=vpc,
-            version=eks.KubernetesVersion.V1_27,
-            default_capacity=1,  # uses t3.small by default
+            version = eks.KubernetesVersion.V1_27,
+            default_capacity = 1,  # uses t3.small by default
             kubectl_layer=kubectl_layer  # required
         )
         # Store cluster name in SSM Parameter Store
         cluster_name = ssm.StringParameter(scope, "EksClusterNameParam",
-            parameter_name="/config/cdk_demo/eks/cluster_name",
-            string_value=cluster.cluster_name
+            parameter_name = "/config/cdk_demo/eks/cluster_name",
+            string_value = cluster.cluster_name
         )
 
         # Store cluster endpoint in SSM Parameter Store
         cluster_endpoint = ssm.StringParameter(scope, "EksClusterEndpointParam",
-            parameter_name="/config/cdk_demo/eks/cluster_endpoint",
-            string_value=cluster.cluster_endpoint
+            parameter_name = "/config/cdk_demo/eks/cluster_endpoint",
+            string_value = cluster.cluster_endpoint
         )
 
         return cluster
