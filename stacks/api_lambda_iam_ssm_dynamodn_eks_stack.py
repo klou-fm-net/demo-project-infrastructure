@@ -29,10 +29,10 @@ class KevinLDemoStack(Stack):
         items = api.root.add_resource("names")
         items.add_method("GET", apigateway.LambdaIntegration(lambda_function))
         items.add_method("POST", apigateway.LambdaIntegration(lambda_function))
-        api_deployment = apigateway.Deployment(self, "Deployment", api = api)
-        # Stage named 'prod'
-        apigateway.Stage(self, "ProdStage",
-            deployment = api_deployment,
-            stage_name="prod"
-        )
+        # api_deployment = apigateway.Deployment(self, "Deployment", api = api)
+        # # Stage named 'prod'
+        # apigateway.Stage(self, "ProdStage",
+        #     deployment = api_deployment,
+        #     stage_name="prod"
+        # )
 
